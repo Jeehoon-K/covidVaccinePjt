@@ -31,7 +31,7 @@ def forModernaInit():
     global Moderna_country
     global Moderna_original
     Moderna_country = pd.read_csv('Moderna_country.csv')
-    Moderna_original = pd.read_csv('moderna_tweets_0217.csv')[:100]
+    Moderna_original = pd.read_csv('moderna_tweets_0217.csv')[:6]
     global data1_moderna
     global data2_moderna
     data1_moderna,data2_moderna = pp.preprocess_all(Moderna_original, Moderna_country)
