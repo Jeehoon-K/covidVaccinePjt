@@ -18,6 +18,8 @@ from .import views
 
 app_name = 'vaccinePjt'
 urlpatterns = [
-    path('', views.test),
-
+    path('', views.index, name='index'),
+    path('select/', views.select, name='select'),
+    path('input_text/', views.inputText, name='inputText'),
+    path('result/', views.result, name='result')
 ]
