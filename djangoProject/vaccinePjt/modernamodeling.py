@@ -1,10 +1,6 @@
 from sklearn.cluster import KMeans
 import pandas as pd
 import numpy as np
-from sentence_transformers import *
-from sklearn.decomposition import PCA
-from sklearn.manifold import TSNE
-# from sklearn.cluster import MiniBatchKMeansuma
 import re
 from nltk.stem import WordNetLemmatizer
 import nltk
@@ -13,11 +9,8 @@ nltk.download('punkt')
 nltk.download('wordnet')
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
-import matplotlib.cm as cm
 import torch
-import sentence_transformers
-import umap
-from gensim.models import Word2Vec
+from sentence_transformers import SentenceTransformer, util
 import vaccinePjt.preprocessing as pp
 
 Moderna_country = ''
@@ -51,7 +44,7 @@ def forModernaInit():
     global Moderna_embeddings
     global Moderna_embeddings_backup
     global Moderna_original_backup
-    Moderna_model=SentenceTransformer('bert-large-nli-mean-tokens')
+    Moderna_model=SentenceTransformer('msmarco-distilbert-base-v2')
     Moderna_embeddings = Moderna_model.encode(data2_moderna['text'])
     Moderna_embeddings_backup = Moderna_embeddings.copy()
     Moderna_original_backup = Moderna_original.copy()
