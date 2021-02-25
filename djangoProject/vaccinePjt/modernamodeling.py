@@ -31,7 +31,7 @@ def forModernaInit():
     global Moderna_country
     global Moderna_original
     Moderna_country = pd.read_csv('Moderna_country.csv')
-    Moderna_original = pd.read_csv('moderna_tweets_0217.csv')[:6]
+    Moderna_original = pd.read_csv('moderna_tweets_0217.csv')[:5]
     global data1_moderna
     global data2_moderna
     data1_moderna,data2_moderna = pp.preprocess_all(Moderna_original, Moderna_country)
@@ -98,5 +98,10 @@ def Moderna_qna(query):
     print("Query:", query)
     print("\nTop 5 most similar sentences in corpus:")
 
+
+    return_results = []
     for score, idx in zip(top_results[0], top_results[1]):
         print(Moderna_original['user_name'].values[idx], " : ", Moderna_original['text'].values[idx], "(Score: %.4f)" % (score))
+        return_results.append([Moderna_original['user_name'].values[idx],Moderna_original['text'].values[idx],round(float(score),3)])
+
+    return return_results

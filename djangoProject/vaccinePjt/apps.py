@@ -12,7 +12,7 @@ class VaccinepjtConfig(AppConfig):
     def ready(self):
         start = time.time()
         pfm.forPfizerInit()
-        # mfm.forModernaInit()
+        mfm.forModernaInit()
         print(time.time() - start)
         _thread = threading.Thread(target=ac.auto_crawling)
         _thread.setDaemon(True)

@@ -98,5 +98,10 @@ def Pfizer_qna(query):
     print("Query:", query)
     print("\nTop 5 most similar sentences in corpus:")
 
+    return_results = []
+
     for score, idx in zip(top_results[0], top_results[1]):
         print(Pfizer_original['user_name'].values[idx], " : ", Pfizer_original['text'].values[idx], "(Score: %.4f)" % (score))
+        return_results.append([Pfizer_original['user_name'].values[idx],Pfizer_original['text'].values[idx],round(float(score),3)])
+
+    return return_results

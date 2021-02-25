@@ -1,1 +1,31 @@
-result
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css">
+
+</head>
+
+<body>
+
+    <ul>
+        <li class="menu"><a href="{% url 'vaccinePjt:index' %}">home</a></li>
+    </ul>     
+    vaccine you are intersted in : {{vaccineSelected}} <br>
+    <br>
+    text you typed: {{ textIn }} <br>
+    <br>
+    {% for id, tweet, score in result %}
+        id: {{id}} <br>
+        tweet: {{tweet}} <br>
+        link: <a href="{{tweet|slice:"-23:" }}">go to see tweet</a><br>
+        score: {{score}}
+        <br><br>
+    {% endfor %}
+</body>
+
+
+
+</html>

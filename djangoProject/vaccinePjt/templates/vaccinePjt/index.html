@@ -1,17 +1,39 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/reset.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
 
 </head>
 
 <body>
-    <form action="{% urls 'select' %}" method="POST" enctype="multipart/form-data" class="inputText">
-        <button type="submit">!</button>
-    </form>
+    <div class="index">
+
+        <span class="title">
+            Covid 19<br>
+            Vaccine<br>
+            Tweets <br>
+        </span>
+
+    </div>
+
+    <div class="bottom">
+
+            <form action="{% url 'vaccinePjt:inputText' %}" method="POST" enctype="multipart/form-data" class="selector">{% csrf_token %}
+                    
+                <button type="submit" value="pfizer" name="vaccineSelector" id="button1">pfizer</button>
+                <button type="submit" value="moderna" name="vaccineSelector" id="button2">moderna</button>
+          
+            </form>
+
+    </div>
+
+
 </body>
 
 

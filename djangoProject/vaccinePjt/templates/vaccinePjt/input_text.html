@@ -9,9 +9,15 @@
 </head>
 
 <body>
-    <form action="{% url 'result' %}" method="POST" enctype="multipart/form-data" class="inputText">
-        <input type="hidden" name= "vaccineSelector" value="{{selectedVaccine}}" />
-        <input type=" text" name = "textReciever" value={{textInfo}}>
+
+    <ul>
+        <li class="menu"><a href="{% url 'vaccinePjt:index' %}">home</a></li>
+    </ul>
+    {{vaccineSelected}}
+    
+    <form action="{% url 'vaccinePjt:result' %}" method="POST" enctype="multipart/form-data" class="inputText"> {% csrf_token %}
+        <input type="hidden" name= "vaccineSelector" value="{{vaccineSelected}}" />
+        <input type=" text" name = "textReciever" value={{textIn}}>
     </form>
 </body>
 

@@ -1,6 +1,9 @@
 from django.shortcuts import render
 import vaccinePjt.apps as apps
 
+import vaccinePjt.pfizermodeling as pfm
+import vaccinePjt.modernamodeling as mfm
+
 # Create your views here.
 
 def index(request):
@@ -11,11 +14,20 @@ def select(request):
 
 def inputText(request):
     vaccineSelected = request.POST["vaccineSelector"]
-    return render(request, 'vaccinePjt/input_text.html', {})
+    return render(request, 'vaccinePjt/input_text.html', {"vaccineSelected":vaccineSelected})
 
 def result(request):
+    vaccineSelected = request.POST["vaccineSelector"]
     textIn = request.POST["textReciever"]
-    return render(request, 'vaccinePjt/result.html', {})
+
+    if vaccineSelected == "pfizer":
+        result = pfm.Pfizer_qna(textIn)
+    else:
+        result = mfm.Moderna_qna(textIn)
+
+
+
+    return render(request, 'vaccinePjt/result.html', {"vaccineSelected":vaccineSelected,"textIn":textIn,"result":result})
 
 
 #def stationPage(request):
