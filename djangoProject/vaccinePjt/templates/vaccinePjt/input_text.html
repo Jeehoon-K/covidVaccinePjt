@@ -1,10 +1,13 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'css/input_text.css' %}">
 
 </head>
 
@@ -13,10 +16,12 @@
     <ul>
         <li class="menu"><a href="{% url 'vaccinePjt:index' %}">home</a></li>
     </ul>
-    {{vaccineSelected}}
+    
     
     <form action="{% url 'vaccinePjt:result' %}" method="POST" enctype="multipart/form-data" class="inputText"> {% csrf_token %}
-        <input type="hidden" name= "vaccineSelector" value="{{vaccineSelected}}" />
+        <div class="qst"> What are you interested in about {{vaccineSelected}} ?</div> 
+        <br>
+        <input type="hidden" name= "vaccineSelector" value="{{vaccineSelected}}"/>
         <input type=" text" name = "textReciever" value={{textIn}}>
     </form>
 </body>

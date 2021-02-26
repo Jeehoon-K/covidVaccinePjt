@@ -3,11 +3,15 @@ import vaccinePjt.apps as apps
 
 import vaccinePjt.pfizermodeling as pfm
 import vaccinePjt.modernamodeling as mfm
+import vaccinePjt.map as createMap
 
 # Create your views here.
 
 def index(request):
-    return render(request, 'vaccinePjt/index.html', {})
+    str_min_date, iframe, people, country, ppd = createMap.mapping()
+    return render(request, 'vaccinePjt/index.html',{"min_date":str_min_date, "iframe":iframe,
+    "people":int(people),"country":int(country), "ppd":ppd
+    }) #{"iframe":iframe})
 
 def select(request):
     return render(request, 'vaccinePjt/select.html', {})

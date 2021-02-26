@@ -1,10 +1,13 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'css/result.css' %}">
 
 </head>
 
@@ -12,18 +15,27 @@
 
     <ul>
         <li class="menu"><a href="{% url 'vaccinePjt:index' %}">home</a></li>
-    </ul>     
-    vaccine you are intersted in : {{vaccineSelected}} <br>
+    </ul>
+    
+    <div class="content">
+    YOU TYPED <span style="font-weight: bold; font-style: italic; color: #95afc0;">{{textIn|upper}}</span> ABOUT 
+    <span style="font-weight: bold; font-style: italic; color: #95afc0;">{{vaccineSelected|upper}}</span> <br>
     <br>
-    text you typed: {{ textIn }} <br>
+    about this,
+    <br>
     <br>
     {% for id, tweet, score in result %}
-        id: {{id}} <br>
-        tweet: {{tweet}} <br>
-        link: <a href="{{tweet|slice:"-23:" }}">go to see tweet</a><br>
-        score: {{score}}
+        <span style="font-size: large; font-style: italic; color: #ffbe76;">{{id}}</span> said, <br>
+        <span style="color: thistle;">
+        <span style="font-size: x-large; font-family: 'Times New Roman', Times, serif;">❝</span> 
+         <span style="font-size: large; font-style: italic;">{{tweet|slice:':-23'}}</span>
+         <span style="font-size: x-large; font-family: 'Times New Roman', Times, serif;">❞</span> <br> </span>
+
+         <a style="color: white;" href="{{tweet|slice:'-23:' }}">GO TO SEE TWEET</a> (scroe : {{score}})<br>
         <br><br>
     {% endfor %}
+    </div>
+
 </body>
 
 
