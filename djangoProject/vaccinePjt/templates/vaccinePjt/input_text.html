@@ -19,7 +19,7 @@
     
     
     <form action="{% url 'vaccinePjt:result' %}" method="POST" enctype="multipart/form-data" class="inputText"> {% csrf_token %}
-        <div class="qst"> What are you interested in about {{vaccineSelected}} ?</div> 
+        <div class="qst"> What topic do you want to find about {{vaccineSelected}} ?</div> 
         <br>
         <input type="hidden" name= "vaccineSelector" value="{{vaccineSelected}}"/>
         <input type=" text" name = "textReciever" value={{textIn}}>
